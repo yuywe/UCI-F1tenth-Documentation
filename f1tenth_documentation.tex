@@ -100,7 +100,7 @@ Reinforcement learning methods, such as Proximal Policy Optimization (PPO), requ
 As a solution, we developed \textit{WarpoRacer}, a GPU-accelerated rigid-body simulator that allows for parallelized simulation of multiple vehicles and race maps.
 
 \begin{itemize}
-    \item \textbf{\texttt{/warporacer}:} Our core simulation engine. It is capable of executing simple rigid-body physics and collisions across parallel instances simultaneously 
+    \item \textbf{\texttt{/warporacer}:} Our core simulation engine. It is capable of executing simple rigid-body physics and collisions across 8000 parallel instances simultaneously 
     within GPU CUDA kernels. NVIDIA Warp also helps accelerate the computation of 2D LiDAR rays, which are passed into PyTorch networks for PPO policy training.
     \item \textbf{Observation Space:} The observation is a 110 element array that consists of 108 downsampled LiDAR ray casts spanning a $270^\circ$ field of view along with the vehicle's current steering angle and its forward velocity.
     Since the PPO policy only sees readings from sensors with no map relevant data, the method requires no localization at run time, resulting in our choice to use SLAM primarily for map generation.
@@ -143,5 +143,5 @@ This documentation presented the mechanical and software foundations of the UCI 
 we are able to iterate a new version of the PPO policy in under 10 minutes. In the past, this has given us significant operational advantages when the policy fails unexpectedly.
 In the future, it is necessary to upgrade our simulator from 2D to 3D along with other improvements. This is due to the fact that competitions are evolving to include ramps, which \textit{WarpoRacer} 
 will not be able to sufficiently handle. This will hopefully also improve our physics simulations, as it gives us a chance to be much more precise in our calculations to include parameters
-such as pitch, roll, vertical load, etc.
+such as pitch, roll, vertical load, etc. Lastly, happy racing!
 \end{document}
